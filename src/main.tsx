@@ -19,6 +19,9 @@ export type Falsy = false | 0 | "" | null | undefined;
 export const cls = (names: (string | Falsy)[]) =>
   names.filter((e) => e).join(" ");
 
+const TestArray = () => <>1{[<div>2</div>, <div>3</div>, <div>4</div>]}5</>;
+document.body.append(TestArray());
+
 interface Todo {
   id: number;
   completed: false;
@@ -37,7 +40,7 @@ const removeTodo = (id: number) =>
 let inputRef: HTMLInputElement;
 
 document.body.append(
-  <div>
+  <>
     <form
       onSubmit={(event) => {
         event.preventDefault();
@@ -61,5 +64,5 @@ document.body.append(
         ))
       )}
     </ul>
-  </div>
+  </>
 );
