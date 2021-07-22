@@ -19,8 +19,8 @@ export type Falsy = false | 0 | "" | null | undefined;
 export const cls = (names: (string | Falsy)[]) =>
   names.filter((e) => e).join(" ");
 
-const TestArray = () => <>1{[<div>2</div>, <div>3</div>, <div>4</div>]}5</>;
-document.body.append(TestArray());
+// const TestArray = () => <>1{[<div>2</div>, <div>3</div>, <div>4</div>]}5</>;
+// document.body.append(TestArray());
 
 interface Todo {
   id: number;
@@ -31,11 +31,18 @@ interface Todo {
 const todoList = signal.anon<Todo[]>([]);
 
 let id = 0;
+
+// These are both rather inefficient, but are here for simplicity.
 const addTodo = (description: string) =>
   todoList([...todoList(), { id: ++id, description, completed: false }]);
 
 const removeTodo = (id: number) =>
   todoList(todoList().filter((t) => t.id !== id));
+
+const sortTodos = () =>
+  todoList(
+    todoList().sort((a, b) => a.description.localeCompare(b.description))
+  );
 
 let inputRef: HTMLInputElement;
 
@@ -53,6 +60,9 @@ document.body.append(
           <input placeholder="Type a todo here!"></input>
         ) as HTMLInputElement)
       }
+      <button type="button" onClick={sortTodos}>
+        sort
+      </button>
     </form>
     <ul>
       {wire(($) =>
