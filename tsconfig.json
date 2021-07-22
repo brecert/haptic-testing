@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "outDir": "publish",
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "importsNotUsedAsValues": "error",
+    "paths": {
+      "haptic": ["./haptic/publish", "./haptic/src/index.ts", "./haptic/src/dom/h.ts"],
+      "haptic/*": ["./haptic/publish/*", "./haptic/src/*"]
+    }
+  }
+}

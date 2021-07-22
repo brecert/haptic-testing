@@ -1,0 +1,3 @@
+[submodule "haptic"]
+	path = haptic
+	url = https://github.com/brecert/haptic
