@@ -1,4 +1,4 @@
-import { App } from "./todo";
+import { App } from "./bench";
 
 // import '/css/currentStyle.css'
 
